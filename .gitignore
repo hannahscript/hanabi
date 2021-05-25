@@ -1,0 +1,6 @@
+.idea
+*.iml
+.env
+build
+node_modules
+database.db
