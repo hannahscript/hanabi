@@ -12,20 +12,20 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/better-sqlite3": "^5.4.1",
+    "@types/better-sqlite3": "^7.4.0",
     "@types/chai": "^4.2.18",
-    "@types/mocha": "^8.2.2",
-    "@types/node": "^15.3.0",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.7.2",
     "chai": "^4.3.4",
-    "dotenv": "^9.0.2",
-    "mocha": "^8.4.0",
+    "dotenv": "^10.0.0",
+    "mocha": "^9.1.0",
     "ts-node": "^10.0.0",
     "typescript": "^4.2.4"
   },
   "dependencies": {
     "better-sqlite3": "^7.4.0",
     "chalk": "^4.1.1",
-    "discord.js": "^12.5.3",
+    "discord.js": "^13.1.0",
     "discord.js-commando": "^0.12.3"
   }
 }
