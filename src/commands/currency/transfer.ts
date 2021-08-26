@@ -39,7 +39,7 @@ export class TransferCommand extends Command {
             return message.say('Command must be run by a user.');
         }
 
-        const balance = await this.currencyService.getBalance(originUserId);
+        const balance = this.currencyService.getBalance(originUserId);
         if (balance === null) {
             return message.say('You need an account for this action. Use the &balance command to create one.');
         }
@@ -48,11 +48,11 @@ export class TransferCommand extends Command {
             return message.say(`You have insufficient coins for this transaction (${balance}).`);
         }
 
-        if (!await this.currencyService.hasAccount(targetUserId)) {
+        if (!this.currencyService.hasAccount(targetUserId)) {
             return message.say('That user does not have an account.');
         }
 
-        await this.currencyService.transfer(originUserId, targetUserId, amount);
+        this.currencyService.transfer(originUserId, targetUserId, amount);
         return message.say('Successfully transferred coins.')
     }
 }

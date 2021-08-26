@@ -17,7 +17,7 @@ export class BalanceCommand extends Command {
             let balance = await this.currencyService.getBalance(userId);
             if (balance === null) {
                 const startingBalance = 50;
-                await this.currencyService.createWallet(userId, startingBalance);
+                this.currencyService.createWallet(userId, startingBalance);
                 balance = startingBalance;
             }
 

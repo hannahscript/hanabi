@@ -13,7 +13,7 @@ export class CurrencyService {
         this.removeBalanceIfExistsStm = db.prepare('update wallets set balance = iif(balance < $amount, balance, balance - $amount) where user_id = $originUserId');
     }
 
-    async createWallet(userId: string, balance: number): Promise<boolean> {
+    createWallet(userId: string, balance: number): boolean {
         try {
             this.createWalletStm.run({userId, balance});
         } catch (ex) {
@@ -23,16 +23,16 @@ export class CurrencyService {
         return true;
     }
 
-    async getBalance(userId: string): Promise<number | null> {
+    getBalance(userId: string): number | null {
         const result = this.getBalanceStm.get({userId});
         return result ? result.balance : null;
     }
 
-    async hasAccount(userId: string): Promise<boolean> {
-        return (await this.getBalance(userId)) !== null;
+    hasAccount(userId: string): boolean {
+        return this.getBalance(userId) !== null;
     }
 
-    async transfer(originUserId: string, targetUserId: string, amount: number) {
+    transfer(originUserId: string, targetUserId: string, amount: number) {
         if (originUserId === targetUserId) {
             throw new Error('Can not transfer to same account');
         }
